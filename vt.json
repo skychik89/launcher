@@ -1,0 +1,11 @@
+{
+  "sha256": "896810c9e2991387a1e1990a3c7a29a3bc57e35bb5359b5511aa3a329f8f9e84",
+  "date": "2026-10-04T13:21:31Z",
+  "stats": {
+    "malicious": 0,
+    "suspicious": 0,
+    "undetected": 68,
+    "harmless": 0
+  },
+  "permalink": "https://www.virustotal.com/gui/file/896810c9e2991387a1e1990a3c7a29a3bc57e35bb5359b5511aa3a329f8f9e84"
+}
