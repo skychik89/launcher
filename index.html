@@ -3,117 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NEELUX Launcher — лаунчер Minecraft от команды Neelux</title>
-  <meta name="description" content="Бесплатный лаунчер Minecraft: сборки с модами в один клик, Neelux AI, быстрый запуск, переезд из TLauncher и других лаунчеров, 12 тем. Проверен на VirusTotal." />
+  <title>NEELUX Launcher — бесплатный лаунчер Minecraft со сборками в один клик</title>
+  <meta name="description" content="Бесплатный лаунчер Minecraft без рекламы: сборки с модами в один клик, Neelux AI соберёт сборку под тебя, починка вылетов одной кнопкой, переезд из TLauncher за минуту, 12 тем." />
   <meta name="theme-color" content="#0c0c0b" />
+  <meta property="og:title" content="NEELUX Launcher — Minecraft с модами в один клик" />
+  <meta property="og:description" content="Бесплатно, без рекламы. ИИ соберёт сборку, починит вылет и перенесёт миры из TLauncher." />
+  <meta property="og:image" content="assets/shots/lobby.png" />
   <link rel="icon" href="assets/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Manrope:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Manrope:wght@400;600;700;800&display=swap" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="bg" aria-hidden="true"></canvas>
 
   <header class="top">
-    <a class="logo" href="#top"><i class="dot"></i>neelux</a>
+    <a class="logo" href="#top"><img src="assets/icon.png" alt="" width="22" height="22" />neelux</a>
     <nav class="nav">
       <a href="#features">возможности</a>
-      <a href="#install">установка</a>
+      <a href="#ai">neelux ai</a>
+      <a href="#compare">сравнение</a>
       <a href="#safety">безопасность</a>
       <a href="#faq">вопросы</a>
     </nav>
     <div class="themes" id="themes" aria-label="тема сайта"></div>
-    <a class="btn btn-accent btn-sm dl-link" href="#download">скачать</a>
+    <a class="btn btn-accent btn-sm dl-link js-dl" href="#download">скачать</a>
   </header>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
       <div class="hero-text">
-        <p class="kicker">— лаунчер minecraft от команды <b>neelux</b></p>
-        <h1 class="title">Играй.<br>Собирай.<br><span class="hl">Кастомь.</span></h1>
-        <p class="lead">Бесплатный лаунчер: сборки с модами в один клик, ИИ-помощник, мгновенный запуск, переезд из TLauncher и других лаунчеров, 12 тем и 3D-гардероб.</p>
+        <p class="pill"><i class="live"></i>версия <span class="js-ver">1.1</span> · бесплатно навсегда</p>
+        <h1 class="title">Minecraft<br>с модами —<br><span class="hl">в один клик.</span></h1>
+        <p class="lead">Лаунчер, который сам собирает сборку, чинит вылеты и переносит миры из TLauncher. Без рекламы, без доната, без лишних окон.</p>
         <div class="cta" id="download">
-          <a class="btn btn-accent btn-lg" id="dlBtn" href="#" aria-disabled="true">
+          <a class="btn btn-accent btn-xl js-dl" id="dlBtn" href="#download">
             <svg viewBox="0 0 12 12"><path d="M5 1h2v5h2l-3 3-3-3h2zM1 10h10v1H1z"/></svg>
-            <span><b>Скачать для Windows</b><small id="dlMeta">готовится…</small></span>
+            <span><b>Скачать для Windows</b><small class="js-meta">установщик · .exe</small></span>
           </a>
           <a class="btn btn-line btn-lg" href="#safety" id="vtShort">
             <svg viewBox="0 0 12 12"><path d="M6 0 1 2v4c0 3 2 5 5 6 3-1 5-3 5-6V2zm-1 8L3 6l1-1 1 1 3-3 1 1z"/></svg>
-            <span><b>VirusTotal</b><small id="vtShortText">проверка файла</small></span>
+            <span><b>Безопасно</b><small id="vtShortText">VirusTotal · SHA-256</small></span>
           </a>
         </div>
-        <p class="fine">Windows 10 / 11 · 64-бит · бесплатно навсегда · <span id="dlVersion"></span></p>
+        <ul class="trust">
+          <li>без рекламы</li><li>Windows 10 / 11</li><li>Java ставится сама</li><li>русский интерфейс</li>
+        </ul>
       </div>
       <div class="hero-art">
         <div class="rays"></div>
+        <figure class="hero-shot"><img src="assets/shots/lobby.png" alt="Лобби NEELUX Launcher" /></figure>
         <canvas id="skin" width="360" height="460" aria-label="3D-персонаж"></canvas>
         <div class="bubble" id="bubble">Привет!</div>
+        <div class="float f1"><b>&lt; 1 с</b>до лобби</div>
+        <div class="float f2"><b>AI</b>соберёт сборку</div>
         <div class="emotes" id="emotes">
           <button data-e="wave">привет</button><button data-e="dance">танец</button><button data-e="jump">прыжок</button><button data-e="spin">вертушка</button>
         </div>
       </div>
     </section>
 
+    <div class="marquee" aria-hidden="true"><div class="mq-track" id="mq"></div></div>
+
     <section class="stats">
-      <div><b>&lt; 1 с</b><span>до лобби</span></div>
-      <div><b>1 клик</b><span>сборка с модами</span></div>
-      <div><b>12</b><span>тем и живые фоны</span></div>
-      <div><b>0 ₽</b><span>всё бесплатно</span></div>
+      <div><b>&lt; 1 с</b><span>от запуска до лобби</span></div>
+      <div><b>1 клик</b><span>сборка с модами и шейдерами</span></div>
+      <div><b>12</b><span>тем, живые и видеофоны</span></div>
+      <div><b>0 ₽</b><span>всё бесплатно, без подписок</span></div>
+    </section>
+
+    <!-- PAIN → SOLUTION -->
+    <section class="section pains">
+      <p class="kicker">— знакомо?</p>
+      <h2 class="h2">Хотел поиграть с модами,<br>а <span class="hl">полдня</span> чинил сборку</h2>
+      <div class="pain-grid" id="pains"></div>
+    </section>
+
+    <!-- SPOTLIGHTS -->
+    <section class="section spot" id="ai">
+      <div class="spot-text">
+        <p class="kicker">— neelux ai · бесплатно</p>
+        <h2 class="h2">Скажи, во что хочешь играть.<br><span class="hl">Сборку соберёт ИИ.</span></h2>
+        <p class="lead">«Сборка с магией и драконами на 1.20.1» — и через минуту готов большой модпак без конфликтов: оптимизация, шейдеры, данжи, новые мобы. ИИ объяснит вылет и перенесёт сборку на новую версию.</p>
+        <ul class="ticks"><li>подбирает моды с Modrinth и ставит зависимости</li><li>проверяет совместимость до запуска</li><li>работает без своего ключа</li></ul>
+      </div>
+      <figure class="frame rv"><img src="assets/shots/ai.png" alt="Neelux AI собирает сборку" loading="lazy" /></figure>
+    </section>
+
+    <section class="section spot rev">
+      <div class="spot-text">
+        <p class="kicker">— переезд за минуту</p>
+        <h2 class="h2">Уходишь с TLauncher?<br><span class="hl">Миры заберём с собой.</span></h2>
+        <p class="lead">Лаунчер сам находит TLauncher, Prism, CurseForge, Modrinth App и официальный лаунчер. Отмечаешь сборки галочками — миры, моды и настройки копируются. В старом лаунчере всё остаётся.</p>
+        <ul class="ticks"><li>миры, моды, скриншоты, настройки</li><li>игру не нужно качать заново</li><li>аккаунты и пароли не трогаются</li></ul>
+      </div>
+      <figure class="frame rv"><img src="assets/shots/migrate.png" alt="Переезд из другого лаунчера" loading="lazy" /></figure>
+    </section>
+
+    <section class="section spot">
+      <div class="spot-text">
+        <p class="kicker">— кастом</p>
+        <h2 class="h2">Лаунчер, который<br><span class="hl">выглядит как твой.</span></h2>
+        <p class="lead">12 непохожих тем, живые и видеофоны, 9 анимаций переходов, раскладка лобби перетаскиванием. Попробуй прямо тут — переключи тему в шапке сайта.</p>
+        <ul class="ticks"><li>3D-персонаж с 20 эмоциями</li><li>скины, плащи и крылья за 0 ₽</li><li>делись своей темой кодом</li></ul>
+      </div>
+      <figure class="frame rv"><img src="assets/shots/custom.png" alt="Настройка внешнего вида" loading="lazy" /></figure>
     </section>
 
     <!-- FEATURES -->
     <section class="section" id="features">
-      <p class="kicker">— что внутри</p>
+      <p class="kicker">— что ещё внутри</p>
       <h2 class="h2">Всё, что нужно, чтобы играть</h2>
       <div class="grid" id="featureGrid"></div>
+    </section>
+
+    <!-- COMPARE -->
+    <section class="section" id="compare">
+      <p class="kicker">— сравнение</p>
+      <h2 class="h2">Чем NEELUX лучше<br>обычного лаунчера</h2>
+      <div class="cmp rv" role="table" id="cmp"></div>
     </section>
 
     <!-- SCREENS -->
     <section class="section">
       <p class="kicker">— как выглядит</p>
-      <h2 class="h2">Скриншоты</h2>
+      <h2 class="h2">Скриншоты из лаунчера</h2>
       <div class="shots" id="shots"></div>
     </section>
 
     <!-- INSTALL -->
     <section class="section" id="install">
       <p class="kicker">— установка</p>
-      <h2 class="h2">Четыре шага — и ты в игре</h2>
+      <h2 class="h2">Три шага — и ты в игре</h2>
       <ol class="steps">
-        <li><span class="n">1</span><div><b>Скачай установщик</b><p>Кнопка «Скачать для Windows» наверху. Файл один — без рекламы и «помощников».</p></div></li>
-        <li><span class="n">2</span><div><b>Проверь файл (по желанию)</b><p>Перетащи его в блок «Проверка файла» ниже — сайт сравнит отпечаток SHA-256 с официальным, прямо в браузере.</p></div></li>
-        <li><span class="n">3</span><div><b>Запусти и выбери папку</b><p>Если Windows покажет синее окно SmartScreen — нажми «Подробнее» → «Выполнить в любом случае»: так бывает с каждым новым установщиком без платной подписи.</p></div></li>
-        <li><span class="n">4</span><div><b>Введи ник и играй</b><p>Лаунчер сам скачает нужную Java и версию игры. Есть другой лаунчер? Нажми «переезд» — миры и сборки перенесутся.</p></div></li>
+        <li><span class="n">1</span><div><b>Скачай установщик</b><p>Один файл с этой страницы. Без рекламы, «помощников» и сторонних программ.</p></div></li>
+        <li><span class="n">2</span><div><b>Запусти</b><p>Если Windows покажет синее окно SmartScreen — «Подробнее» → «Выполнить в любом случае». Так бывает с каждой новой программой без платной подписи.</p></div></li>
+        <li><span class="n">3</span><div><b>Введи ник и играй</b><p>Java и нужная версия игры скачаются сами. Есть старый лаунчер? Нажми «переезд».</p></div></li>
       </ol>
     </section>
 
     <!-- SAFETY -->
     <section class="section" id="safety">
       <p class="kicker">— безопасность</p>
-      <h2 class="h2">Проверено на VirusTotal</h2>
+      <h2 class="h2">Файл можно проверить.<br><span class="hl">Нам нечего скрывать.</span></h2>
       <div class="safety">
         <div class="card vt" id="vtCard">
-          <div class="vt-head"><span class="vt-ring" id="vtRing"><b id="vtScore">—</b></span>
-            <div><b id="vtTitle">Отчёт VirusTotal</b><small id="vtSub">загрузка…</small></div></div>
-          <div class="vt-bars" id="vtBars"></div>
-          <a class="btn btn-line" id="vtLink" href="https://www.virustotal.com/" target="_blank" rel="noopener">открыть отчёт на virustotal.com</a>
+          <div class="vt-head">
+            <span class="vt-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 2h20v20H2zM5 5v14h14V5zm2 4h3l2 6 2-6h3l-4 8h-2z"/></svg></span>
+            <div><b id="vtTitle">VirusTotal</b><small id="vtSub">70+ антивирусов проверяют один и тот же файл</small></div>
+          </div>
+          <div class="vt-result" id="vtResult"></div>
+          <a class="btn btn-accent" id="vtLink" href="https://www.virustotal.com/" target="_blank" rel="noopener">
+            <span><b>Открыть отчёт</b><small>virustotal.com · по отпечатку файла</small></span>
+          </a>
         </div>
         <div class="card hash">
-          <b>Отпечаток файла SHA-256</b>
+          <b>Отпечаток SHA-256</b>
+          <p class="muted">Уникальный «отпечаток» установщика. Если в файле изменится хоть один байт, отпечаток будет другим.</p>
           <code id="sha" class="sha">—</code>
           <button class="btn btn-line btn-sm" id="copySha">скопировать</button>
-          <p class="muted">Проверить у себя: <code>certutil -hashfile NEELUX-Launcher-Setup.exe SHA256</code></p>
         </div>
         <label class="card drop" id="drop">
           <input type="file" id="fileInput" hidden />
           <span class="drop-ico"><svg viewBox="0 0 12 12"><path d="M5 11h2V6h2L6 3 3 6h2zM1 1h10v1H1z"/></svg></span>
-          <b>Проверка файла</b>
-          <span class="muted" id="dropText">Перетащи сюда скачанный установщик — отпечаток посчитается в браузере, файл никуда не отправляется.</span>
+          <b>Проверь свой файл</b>
+          <span class="muted" id="dropText">Перетащи сюда скачанный установщик — сайт сравнит отпечаток с официальным. Файл никуда не отправляется.</span>
         </label>
       </div>
-      <p class="muted note">Лаунчер не собирает данные и не просит пароль от Microsoft: игра запускается по нику. Ключи ИИ (если подключишь свои) хранятся на твоём ПК в зашифрованном виде.</p>
+      <ul class="ticks note"><li>не просит пароль от Microsoft — игра запускается по нику</li><li>не собирает данные и не ставит ничего лишнего</li><li>свои ключи ИИ (если подключишь) хранятся на твоём ПК зашифрованными</li></ul>
     </section>
 
     <!-- FAQ -->
@@ -124,15 +183,39 @@
     </section>
 
     <section class="section final">
-      <h2 class="h2">Готов? <span class="hl">Погнали.</span></h2>
-      <a class="btn btn-accent btn-lg" href="#download">скачать neelux launcher</a>
+      <div class="final-box">
+        <img src="assets/icon.png" alt="" width="64" height="64" class="final-ico" />
+        <h2 class="h2">Готов? <span class="hl">Погнали.</span></h2>
+        <p class="lead">Скачай, введи ник — через минуту ты в игре.</p>
+        <a class="btn btn-accent btn-xl js-dl" href="#download">
+          <svg viewBox="0 0 12 12"><path d="M5 1h2v5h2l-3 3-3-3h2zM1 10h10v1H1z"/></svg>
+          <span><b>Скачать NEELUX Launcher</b><small class="js-meta">установщик · .exe</small></span>
+        </a>
+        <p class="fine">Windows 10 / 11 · 64-бит · <span id="dlVersion"></span></p>
+      </div>
     </section>
   </main>
 
   <footer class="foot">
-    <span><i class="dot"></i>neelux team · <a href="https://neelux.is-a.dev" target="_blank" rel="noopener">neelux.is-a.dev</a> · <a href="https://discord.gg/neelux" target="_blank" rel="noopener">discord.gg/neelux</a></span>
+    <span><i class="dot"></i>neelux team · <a href="https://neelux.is-a.dev" target="_blank" rel="noopener">neelux.is-a.dev</a> · <a href="https://discord.gg/neelux" target="_blank" rel="noopener">discord.gg/neelux</a> · <a href="https://t.me/xwias" target="_blank" rel="noopener">@xwias</a></span>
     <span class="muted">Minecraft — товарный знак Mojang AB. NEELUX Launcher не связан с Mojang и Microsoft.</span>
   </footer>
+
+  <!-- sticky download on phones -->
+  <a class="mbar js-dl" href="#download"><b>Скачать бесплатно</b><small class="js-meta">Windows · .exe</small></a>
+
+  <!-- after-click helper -->
+  <dialog class="dlg" id="dlg">
+    <button class="dlg-x" id="dlgX" aria-label="закрыть">×</button>
+    <p class="kicker">— скачивание началось</p>
+    <h3 class="h3">Пара секунд — и готово</h3>
+    <ol class="dlg-steps">
+      <li><b>Открой файл</b> из загрузок браузера.</li>
+      <li><b>Если Windows покажет синее окно</b> — нажми «Подробнее», потом «Выполнить в любом случае».</li>
+      <li><b>Введи ник</b> — Java и игра скачаются сами.</li>
+    </ol>
+    <p class="muted small">Не началось? <a id="dlgRetry" href="#">Нажми здесь</a>. Вопросы — в <a href="https://discord.gg/neelux" target="_blank" rel="noopener">Discord</a>.</p>
+  </dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/bundles/skinview3d.bundle.js" defer></script>
   <script src="app.js" defer></script>
